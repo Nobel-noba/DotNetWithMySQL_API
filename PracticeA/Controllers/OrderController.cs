@@ -6,7 +6,7 @@ using System.Collections.Generic;
 namespace PracticeA.Controllers
 {
     [ApiController]
-    [Route("api/Orders")]
+    [Route("api/mongo/Orders")]
     public class OrderController : ControllerBase
     {
         OrderServices orderService;

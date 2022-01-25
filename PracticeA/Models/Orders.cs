@@ -1,4 +1,6 @@
-﻿namespace PracticeA.Models
+﻿
+
+namespace PracticeA.Models
 {
     public class Orders
     {

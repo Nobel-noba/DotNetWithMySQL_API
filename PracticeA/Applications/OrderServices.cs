@@ -1,4 +1,5 @@
-﻿using PracticeA.Models;
+﻿using MongoDB.Driver;
+using PracticeA.Models;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -10,10 +11,14 @@ namespace PracticeA.Applications
 
         public OrderServices(OrderContext _orderContext)
         {
-            this.orderContext = _orderContext;
+            orderContext = _orderContext;
+
         }
 
-
+        /*  public OrderServices(OrderContext _orderContext)
+          {
+              this.orderContext = _orderContext;
+          }*/
         public List<Orders> GetAllOrders()
         {
             return orderContext.Orders.ToList();
@@ -42,4 +47,5 @@ namespace PracticeA.Applications
             orderContext.SaveChanges();
         }
     }
+
 }

@@ -29,6 +29,11 @@ namespace PracticeA
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // Enabling Cors
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
 
          //   adding the context
            
@@ -39,6 +44,7 @@ namespace PracticeA
             services.AddMvc();
             services.AddSingleton<OrderContext>();
             services.AddSingleton<OrderServices>();
+            services.AddSingleton<UserService>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -49,6 +55,9 @@ namespace PracticeA
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            //Enabling Cors
+            app.UseCors(options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
